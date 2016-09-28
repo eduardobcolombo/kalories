@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'calories', 'email', 'password',
+        'name', 'calories_expected', 'email', 'password',
     ];
 
     /**
@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function calories()
+    {
+        return $this->hasMany(Calorie::class);
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\Categorie;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -11,12 +13,12 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
         'name' => $faker->name,
-        'calories' => $faker->numberBetween(1,10000),
+        'calories_expected' => $faker->numberBetween(1,10000),
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
@@ -26,8 +28,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(Categorie::class, function (Faker\Generator $faker) {
     return [
-        'date' => $faker->date,
-        'time' => $faker->time,
+        'calories' => $faker->numberBetween(1,10),
+        'date' => $faker->date('Y-m-d'),
+        'time' => $faker->time('H:i:s'),
         'text' => $faker->sentence,
         'number_of_calories' => $faker->numberBetween(1,10000),
     ];

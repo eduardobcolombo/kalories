@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
+
+//
+Route::group(['prefix'=>'admin', 'middleware'=>'auth.checkrole:admin', 'as'=>'admin.'],function() {
+
+    Route::get('calories', ['as' => 'calories.index', 'uses' => 'CaloriesController@index']);
+    Route::get('calories/create', ['as' => 'calories.create', 'uses' => 'CaloriesController@create']);
+    Route::get('calories/edit/{id}', ['as' => 'calories.edit', 'uses' => 'CaloriesController@edit']);
+    Route::post('calories/update/{id}', ['as' => 'calories.update', 'uses' => 'CaloriesController@update']);
+    Route::post('calories/store', ['as' => 'calories.store', 'uses' => 'CaloriesController@store']);
+    Route::get('calories/destroy/{id}', ['as' => 'calories.destroy', 'uses' => 'CaloriesController@destroy']);
+
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

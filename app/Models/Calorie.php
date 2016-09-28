@@ -1,18 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eduardo
- * Date: 9/28/16
- * Time: 1:43 PM
- */
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-
-class Calorie extends Model
+class Calorie extends Model implements Transformable
 {
+    use TransformableTrait;
+
     protected $table = "calories";
 
     protected $fillable = [
@@ -24,6 +21,11 @@ class Calorie extends Model
     ];
 
     public function user_id()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function users()
     {
         return $this->belongsTo(User::class);
     }

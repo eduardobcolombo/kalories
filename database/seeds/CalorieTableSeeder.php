@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
+use App\Models\Calorie;
 use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
+class CalorieTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
         /*
          * Create 10 Users in the app
          */
-        factory(User::class, 3)
+        factory(Calorie::class, 30)
             ->create();
 
     }
