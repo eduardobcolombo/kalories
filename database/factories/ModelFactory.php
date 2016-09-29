@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use App\Models\Categorie;
+use App\Models\Calorie;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -26,9 +26,9 @@ $factory->define(User::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(Categorie::class, function (Faker\Generator $faker) {
+$factory->define(Calorie::class, function (Faker\Generator $faker) {
     return [
-        'calories' => $faker->numberBetween(1,10),
+        'user_id' => $faker->numberBetween(1,10),
         'date' => $faker->date('Y-m-d'),
         'time' => $faker->time('H:i:s'),
         'text' => $faker->sentence,

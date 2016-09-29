@@ -20,6 +20,7 @@ class CreateCaloriesTable extends Migration
             $table->time('time');
             $table->string('text');
             $table->integer('number_of_calories');
+            $table->timestamps();
         });
     }
 

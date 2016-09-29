@@ -66,6 +66,21 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('calories_expected') ? ' has-error' : '' }}">
+                            <label for="calories_expected" class="col-md-4 control-label">Expected number of calories per day</label>
+
+                            <div class="col-md-6">
+                                <input id="calories_expected" type="text" class="form-control" name="calories_expected" value="{{ old('calories_expected') }}" required autofocus>
+
+                                @if ($errors->has('calories_expected'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('calories_expected') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

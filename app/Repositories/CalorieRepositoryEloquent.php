@@ -7,6 +7,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\CalorieRepository;
 use App\Models\Calorie;
 use App\Validators\CalorieValidator;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class CalorieRepositoryEloquent
@@ -14,6 +15,8 @@ use App\Validators\CalorieValidator;
  */
 class CalorieRepositoryEloquent extends BaseRepository implements CalorieRepository
 {
+
+
     /**
      * Specify Model class name
      *
@@ -24,7 +27,23 @@ class CalorieRepositoryEloquent extends BaseRepository implements CalorieReposit
         return Calorie::class;
     }
 
-    
+    public function getByDate($from, $to)
+    {
+        $user = Auth::user();
+        $result = $this->model
+            ->where('user_id', '=' ,$user->id)
+            ->where('date', '>=',$from)
+            ->where('date', '<=',$to)
+            ->get()
+        ;
+
+        if ($result) return $this->parserResult($result);
+        throw (new ModelNotFoundException)->setModel(get_class($this->model));
+    }
+
+
+
+
 
     /**
      * Boot up the repository, pushing criteria

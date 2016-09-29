@@ -24,6 +24,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth.checkrole:admin', 'as'=>'ad
     Route::post('calories/update/{id}', ['as' => 'calories.update', 'uses' => 'CaloriesController@update']);
     Route::post('calories/store', ['as' => 'calories.store', 'uses' => 'CaloriesController@store']);
     Route::get('calories/destroy/{id}', ['as' => 'calories.destroy', 'uses' => 'CaloriesController@destroy']);
+    Route::post('calories', ['as' => 'calories.filter', 'uses' => 'CaloriesController@filter']);
 
 });
 
