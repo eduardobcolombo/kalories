@@ -15,8 +15,11 @@ require('laravel-elixir-vue');
 
 elixir(mix => {
     mix.sass('app.scss')
-       .webpack('app.js');
+       .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/build/fonts/bootstrap')
+        .webpack('app.js');
+
 });
+
 
 var phpunit = require('gulp-phpunit');
 

@@ -30,4 +30,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth.checkrole:admin', 'as'=>'ad
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', function() {
+    return redirect()->route('admin.calories.index');
+});

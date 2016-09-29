@@ -10,6 +10,7 @@
         </p>
         @include('admin.calories._search')
 
+
         <table class="table">
             <thread>
                 <tr>
@@ -23,11 +24,18 @@
             <tbody>
 
             @foreach($calories as $calorie)
-            <tr>
+            <tr @if ($calorie->number_of_calories <= $user->calories_expected)
+                class="success"
+                @else
+                class="danger"
+                @endif
+            >
                 <td>{{$calorie->date}}</td>
                 <td>{{$calorie->time}}</td>
                 <td>{{$calorie->text}}</td>
-                <td>{{$calorie->number_of_calories  }}</td>
+                <td>{{$calorie->number_of_calories  }}
+
+                </td>
                 <td>
                     <a href="{{route('admin.calories.edit',['id'=>$calorie->id])}}" class="btn btn-default btn-sm">
                         Update
