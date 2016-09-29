@@ -11,7 +11,7 @@ To install:
 
 4. You need to create the database. In this project I used sqlite.
 
-Type: \$ touch database/database.sqlite
+\$ touch database/database.sqlite
 
 5. Type php artisan migrate to migrate the database.
 
