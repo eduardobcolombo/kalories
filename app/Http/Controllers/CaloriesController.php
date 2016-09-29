@@ -6,6 +6,7 @@ use App\Services\CalorieService;
 use Illuminate\Http\Request;
 use App\Repositories\CalorieRepository;
 use App\Http\Requests\AdminCalorieRequest;
+use App\Http\Requests\AdminCalorieFilterRequest;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -68,14 +69,13 @@ class CaloriesController extends Controller
         return redirect()->route('admin.calories.index');
     }
 
-    public function filter(Request $request)
+    public function filter(AdminCalorieFilterRequest $request)
     {
-
         $from = $request->get('from');
         $to = $request->get('to');
         $calories = $this->repository->getByDate($from, $to);
 //        dd($calories);
-        return view('admin.calories.index', compact('calories'));
+        return view('admin.calories.index', compact('calories','from','to'));
     }
 
 

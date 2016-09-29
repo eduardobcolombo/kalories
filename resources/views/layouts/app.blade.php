@@ -14,6 +14,7 @@
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -84,5 +85,42 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            var dateFormat = "yy-mm-dd",
+                    from = $( "#from" )
+                            .datepicker({
+                                defaultDate: "-1w",
+                                changeMonth: true,
+                                numberOfMonths: 2,
+                                dateFormat: "yy-mm-dd",
+                            })
+                            .on( "change", function() {
+                                to.datepicker( "option", "minDate", getDate( this ) );
+                            }),
+                    to = $( "#to" ).datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: true,
+                        numberOfMonths: 2,
+                        dateFormat: "yy-mm-dd",
+                    })
+                            .on( "change", function() {
+                                from.datepicker( "option", "maxDate", getDate( this ) );
+                            });
+
+            function getDate( element ) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate( dateFormat, element.value );
+                } catch( error ) {
+                    date = null;
+                }
+
+                return date;
+            }
+        } );
+    </script>
 </body>
 </html>
