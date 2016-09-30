@@ -51,6 +51,11 @@ return [
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
         ],
+        'sqlite.testing' => [
+            'driver' => 'sqlite',
+            'database' => env('DB_DATABASE', database_path('database.testing.sqlite')),
+            'prefix' => '',
+        ],
 
         'mysql' => [
             'driver' => 'mysql',
