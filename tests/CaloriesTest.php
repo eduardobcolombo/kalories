@@ -22,7 +22,7 @@ class CaloriesTest extends TestCase
             ->dontSee('User');
     }
 
-    public function testHasItemInBox()
+    public function testIfCanCreateCalorieRegister()
     {
 
         $data = array(
