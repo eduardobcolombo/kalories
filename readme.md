@@ -3,8 +3,13 @@
 # Kalories
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/eduardobcolombo/kalories)
 
+Kalories is a project to show my skills about PHP Language.
+On this project you can see Repositories, Services,  Middleware, and somethings developed with 
+Laravel Framework 5.3.
+This project is builded by Travis-CI and to test on develop I used gulp + PHPUnit.
 
-To install:
+
+## To install and use for to develop:
 
 1. Clone this repository
 
